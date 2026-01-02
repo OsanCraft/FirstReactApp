@@ -1,0 +1,23 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  // tailwind.config.js
+  "tailwind.config.js": {
+    "module.exports": {
+      "plugins": [
+        "require('tw-animate-css')",
+        // ... other plugins
+      ],
+    },
+  }
+}
