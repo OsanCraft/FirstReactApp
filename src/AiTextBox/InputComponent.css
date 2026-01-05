@@ -3,7 +3,11 @@
 }
 
 .textarea-container {
-    position: relative;  /* Allows absolute positioning of the button */
+    position: relative;
+    display:grid;
+    
+    height: 100vh; 
+      /* Allows absolute positioning of the button */
 }
 
 .textarea-top-placeholder {
@@ -15,7 +19,7 @@
   /* Optional: adds consistent box sizing */
   box-sizing: border-box;
   padding: 10px;
-  padding-right: 50px;  /* Add space for the button on the right */
+  padding-right: 100px;  /* Add space for the button on the right */
   border-radius: 10px;
   font-size: 20px;
   resize: none;
@@ -33,6 +37,12 @@
     align-items: center;
     justify-content: center;
     border: black 1px solid;
+}
+
+#EnterButton {
+    position: absolute;
+    bottom: 3em;
+    right: 4px;
 }
 
 #EnterButton img {
