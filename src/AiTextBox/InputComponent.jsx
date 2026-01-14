@@ -1,24 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Plus, Mic, Waves } from "lucide-react";
 import './InputComponent.css';
 
-
-import { useNavigate } from "react-router-dom";
-
-<head>
-
-    <link rel="stylesheet" href="InputComponent.css" />
-</head> 
-
-
-
-
-
-export default function InputComponent  (){
-
-
+export default function InputComponent() {
     const navigate = useNavigate();
-
-
     const [text, setText] = React.useState("");
 
     const handleAction = () => {
@@ -28,47 +14,53 @@ export default function InputComponent  (){
         }
         setText('');
         alert(`You said: ${text}`);
-        
     };
 
     const handleKeyDown = (event) => {
-        if (event.key === 'Enter'){
+        if (event.key === 'Enter' && !event.shiftKey){
             event.preventDefault();
             handleAction();
         }
     };
 
-    
-
     return (
-    <div className="form-container">
-        <label htmlFor="textarea-top-placeholder" style={{ display: "block", textAlign: "right", marginBottom: "8px" }}>Hello Faithful</label>
-        <div className="textarea-container" style={{ position: "relative", display: "inline-block", width: "100%" }}>
-            <form onSubmit={(e) => { e.preventDefault(); handleAction(); }}>
-                <textarea
-                    className="textarea-top-placeholder"
-                    placeholder="Enter Query..."
-                    id="textarea-top-placeholder"
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    
-                />
-            </form>
+        <div className="main-container">
+            <div className="night-sky" aria-hidden="true">
+                <div className="stars"></div>
+                <div className="mountains"></div>
+            </div>
 
-            <button onClick={() => navigate("/admin")}>
-        Go to Admin Page
-      </button>
-
-            <button onClick={handleAction} data-slot="button" id="EnterButton"  color="blue"  type="submit" data-size="icon-sm" aria-label="Submit">
-                <img src="./Rassests/EnterImage.png" width="30" height="110" viewBox="0 0 25 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-corner-down-left size-4" aria-hidden="true">
-
-                
-                    
-                </img>
+        <div className="form-container">
+            <button className="admin-button" onClick={() => navigate("/admin")}>
+                Go to Admin Page
             </button>
+            
+            <h2 className="main-question">Hello Faithful</h2>
+            
+            <div className="input-container-wrapper">
+                <form onSubmit={(e) => { e.preventDefault(); handleAction(); }} className="input-form">
+                    <div className="input-wrapper">
+                        <Plus className="plus-icon" size={20} />
+                        <input
+                            type="text"
+                            className="chat-input"
+                            placeholder="Ask anything"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                        />
+                        <div className="input-right-icons">
+                            <button type="button" className="icon-btn-small" aria-label="Voice input">
+                                <Mic size={18} />
+                            </button>
+                            <button type="button" className="icon-btn-small" aria-label="Waveform">
+                                <Waves size={18} />
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-  );
-};
-
+        </div>
+    );
+}
