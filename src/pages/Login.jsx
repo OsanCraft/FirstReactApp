@@ -21,11 +21,6 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <div className="night-sky">
-        <div className="stars"></div>
-        <div className="mountains"></div>
-      </div>
-      
       <div id="login">
         <h2>Login</h2>
 
@@ -57,13 +52,13 @@ export default function Login() {
             />
             <span>Remember me</span>
           </label>
-          <a href="#" className="forgot-password">Forgot Password?</a>
+          <a href="#" className="forgot-password" onClick={(e) => { e.preventDefault(); navigate("/forgot-password"); }}>Forgot Password?</a>
         </div>
 
         <button onClick={handleLogin} className="login-button">Login</button>
 
         <p className="register-link">
-          Don't have an account? <a href="#">Register</a>
+          Don't have an account? <a href="#" onClick={(e) => { e.preventDefault(); navigate("/register"); }}>Register</a>
         </p>
       </div>
     </div>
